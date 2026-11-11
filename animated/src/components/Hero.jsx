@@ -49,8 +49,8 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.4, ease: t.reveal.ease, delay: 0.3 }}
         >
-          <Chrome className="h-full w-full" label="Two interlocking chrome rings, standing for a company and its investors" />
-          <motion.p {...fade(1.3)} className="caption-3 absolute inset-x-0 bottom-0 text-center text-fg-3">Your company · Its investors</motion.p>
+          <Chrome className="h-full w-full" label="A chrome candlestick chart in a steady bull run, with a rising trend line and arrow" />
+          <motion.p {...fade(1.3)} className="caption-3 absolute inset-x-0 bottom-0 text-center text-fg-3">Capital follows conviction</motion.p>
         </motion.div>
       </div>
       <Marquee />

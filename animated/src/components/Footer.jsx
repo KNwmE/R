@@ -10,7 +10,7 @@ export default function Footer() {
         <p className="heading-1 phone-heading-4"><BlurWords text="Have questions? Let's talk." inView wordClass="text-hero" /></p>
         <a href="mailto:admin@washuvi.com" className="btn-outline button-sm"><EnvelopeSimple size={16} aria-hidden="true" />admin@washuvi.com</a>
       </div>
-      <Chrome variant="small" className="mx-auto -my-8 h-80 w-full max-w-lg md:h-96" label="Chrome rings" />
+      <Chrome variant="small" className="mx-auto -my-8 h-80 w-full max-w-lg md:h-96" label="A chrome candlestick chart with a rising trend line" />
       <div className="relative mx-auto grid max-w-6xl gap-8 px-4 pb-12 md:grid-cols-4 md:px-8">
         <div className="grid content-start gap-4">
           <a href="#top" className="flex min-h-11 items-center gap-2" aria-label="Washuvi, back to top"><Logo /><span className="title-3">Washuvi</span></a>

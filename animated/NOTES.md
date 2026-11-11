@@ -1,4 +1,22 @@
-# Washuvi animated version: notes (v3)
+# Washuvi animated version: notes (v4)
+
+## v4: the 3D object is now a bull run chart
+
+The interlocking rings are replaced by a chrome candlestick chart that symbolises the firm:
+
+- **Seven candles rise from the baseline one by one**: mostly up days in pearl silver, two
+  small pullbacks in smoked chrome, so it reads as a real, steady market rather than a
+  straight line. The message: capital follows conviction, and conviction compounds.
+- **A chrome trend line then draws itself across the candle tops** and finishes in an
+  arrow pointing up.
+- Caption under the hero chart: "Capital follows conviction".
+- Reflections take the palette colour (emerald, oxblood or bronze); the chart sways gently
+  and follows the pointer; it pauses off screen; the footer copy builds when you reach it.
+- Reduced motion: the finished chart is shown at once, with no build and no sway.
+
+---
+
+# v3 notes
 
 ## v3: full content restored, v2 look kept
 
