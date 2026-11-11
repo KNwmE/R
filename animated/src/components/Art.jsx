@@ -16,17 +16,18 @@ export default function Art({ kind }) {
           </motion.g>
         )}
         {kind === 1 && (
-          <g>
+          <motion.g initial={reduce ? false : 'hide'} whileInView="show" viewport={{ once: true }}>
+            <rect x="0" y="0" width="400" height="300" fill="transparent" />
             {Array.from({ length: 14 }, (_, i) => {
-              const h = 30 + Math.pow(i, 1.45) * 9;
+              const h = 24 + Math.pow(i, 1.35) * 7; // tallest bar stays inside the card
               return (
                 <motion.rect key={i} x={40 + i * 23} width="12" rx="6" fill="var(--accent)" fillOpacity={0.35 + i * 0.045}
                   y={260 - h} height={h} style={{ originY: 1 }}
-                  initial={reduce ? false : { scaleY: 0 }} whileInView={{ scaleY: 1 }} viewport={{ once: true }}
+                  variants={{ hide: { scaleY: 0 }, show: { scaleY: 1 } }}
                   transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: i * 0.05 }} />
               );
             })}
-          </g>
+          </motion.g>
         )}
         {kind === 2 && (
           <g>

@@ -78,7 +78,9 @@
   .caption-3 { font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
   .caption-5 { font-size: 12px; line-height: 16px; font-weight: 400; }
 
-  .text-hero { background: linear-gradient(90deg, #FFFFFF 0%, #9B9B9B 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .text-hero { background: linear-gradient(90deg, #FFFFFF 0%, #9B9B9B 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    /* extend the painted box below the baseline so descenders (g, y, p) are not cut */
+    padding-bottom: 0.15em; margin-bottom: -0.15em; }
 
   .btn { @apply inline-flex items-center justify-center gap-2 min-h-11 rounded-full px-4 py-2 whitespace-nowrap transition-colors duration-300 ease-out; }
   .btn-light { @apply btn bg-fg text-bg hover:bg-white; }

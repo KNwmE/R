@@ -1,5 +1,5 @@
 /** Spacing is locked to the landing-page-design skill tokens (B2). */
-const extra = { 5: '20px', 11: '44px' };
+const extra = { 5: '20px', 11: '44px', 14: '56px' };
 const tall = { 56: '224px', 72: '288px', 80: '320px', 96: '384px' }; // 3D canvas heights
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],

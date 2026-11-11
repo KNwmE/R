@@ -5,19 +5,19 @@ import Art from './Art';
 import BlurWords from './BlurWords';
 
 const services = [
-  { title: 'Investor relations, tailored', body: 'The whole investor engagement programme, assembled around your sector, your stage and your story.',
-    points: ['Bespoke investor communication strategy', 'Quarterly presentations and earnings concalls', 'Management meetings and plant visits', 'Perception management and crisis support'] },
-  { title: 'Strategic advisory', body: 'Aligning your business narrative with capital market expectations, and building the credibility that commands a premium.',
-    points: ['Equity story and growth narrative', 'Valuation enhancement strategy', 'Capital structure advisory', 'IPO preparation and listing readiness'] },
-  { title: 'Stock placement', body: 'Our network, put to work: placing equity with credible, long term investors at the right valuation.',
-    points: ['Access to marquee institutional investors', 'Pre IPO placement for unlisted companies', 'Building a long term shareholder base', 'Reach across MF, FO, PE and HNI networks'] },
+  { title: 'Investor relations, tailored', body: 'No standard playbook. The whole investor engagement programme (strategy, cadence and messaging) is assembled around your sector, your stage and your story.',
+    points: ['Bespoke investor communication strategy', 'Quarterly presentations and earnings concalls', 'Management meetings and plant visits', 'Monthly sector newsletters', 'Perception management and crisis support'] },
+  { title: 'Strategic advisory', body: 'Beyond IR: aligning your business narrative with capital market expectations, sharpening the equity story and building the institutional credibility that commands a premium.',
+    points: ['Equity story and growth narrative', 'Valuation enhancement strategy', 'Capital structure advisory', 'Board and management communication', 'IPO preparation and listing readiness'] },
+  { title: 'Stock placement', body: 'Our network, put to work: placing equity with credible, long term investors at the right valuation, from mutual funds and family offices to PE and serious HNIs.',
+    points: ['Access to marquee institutional investors', 'Equity placement at the right valuation', 'Pre IPO placement for unlisted companies', 'Building a long term shareholder base', 'Reach across MF, FO, PE and HNI networks'] },
 ];
 
 function Card({ s, i, progress, total }) {
   // Each card shrinks slightly as the next one slides over it.
   const scale = useTransform(progress, [i / total, 1], [1, 1 - (total - i) * 0.04]);
   return (
-    <div className="sticky top-24 h-[min(36rem,calc(100svh-8rem))]" style={{ paddingTop: `${i * 16}px` }}>
+    <div className="sticky top-24 h-[min(40rem,calc(100svh-8rem))]" style={{ paddingTop: `${i * 16}px` }}>
       <motion.article style={{ scale }} className="grid h-full origin-top gap-6 rounded-3xl border border-line bg-surface p-2 shadow-[0_-24px_64px_rgba(0,0,0,0.5)] md:grid-cols-2">
         <div className="grid content-between gap-6 p-4 md:p-6">
           <div className="flex items-center justify-between">

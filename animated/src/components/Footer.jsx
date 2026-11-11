@@ -18,7 +18,7 @@ export default function Footer() {
         </div>
         <nav aria-label="Footer" className="grid content-start gap-2">
           <p className="caption-3 text-fg-3">Firm</p>
-          {[['#approach', 'Approach'], ['#services', 'Services'], ['#people', 'People'], ['#contact', 'Enquire']].map(([h, l]) => (
+          {[['#position', 'Position'], ['#approach', 'Approach'], ['#difference', 'Difference'], ['#services', 'Services'], ['#people', 'People'], ['#work', 'Current work'], ['#faq', 'FAQ'], ['#contact', 'Enquire']].map(([h, l]) => (
             <a key={h} href={h} className="body-6 inline-flex min-h-8 items-center text-fg-2 transition-colors hover:text-fg">{l}</a>
           ))}
         </nav>
@@ -26,6 +26,7 @@ export default function Footer() {
           <p className="caption-3 text-fg-3">Contact</p>
           <address className="body-6 text-fg-2">06, 9th Floor, NPX Urbtech, Sector 153, Noida 201304, Uttar Pradesh</address>
           <a href="tel:+918796529416" className="body-6 inline-flex min-h-8 items-center text-fg-2 hover:text-fg">+91 87965 29416</a>
+          <a href="mailto:admin@washuvi.com" className="body-6 inline-flex min-h-8 items-center text-fg-2 hover:text-fg">admin@washuvi.com</a>
           <a href="mailto:shailesh@washuvi.com" className="body-6 inline-flex min-h-8 items-center text-fg-2 hover:text-fg">shailesh@washuvi.com</a>
         </div>
         <div className="grid content-start gap-2">

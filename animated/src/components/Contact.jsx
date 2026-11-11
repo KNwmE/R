@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowRight, CheckCircle, WarningCircle } from '@phosphor-icons/react';
+import { ArrowRight, CheckCircle, WarningCircle, MapPin, Phone, EnvelopeSimple } from '@phosphor-icons/react';
 import BlurWords from './BlurWords';
 import { t } from '../lib/motion';
 
@@ -71,16 +71,23 @@ export default function Contact() {
 
   return (
     <section id="contact" aria-labelledby="contact-title" className="paper border-t border-paper-line bg-paper py-20 text-ink lg:py-24">
-      <div className="mx-auto grid max-w-4xl gap-12 px-4 md:px-8">
-        <div className="grid justify-items-center gap-4 text-center">
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 md:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+        <div className="grid content-start gap-6">
           <p className="eyebrow text-accent-paper">Enquire</p>
-          <h2 id="contact-title" className="heading-3 phone-heading-5 max-w-2xl">
-            <BlurWords text="Washuvi is always looking for founders worth backing. Tell us about your company." inView stagger={0.03} />
+          <h2 id="contact-title" className="heading-2 phone-heading-4">
+            <BlurWords text="Tell us about your company." inView stagger={0.05} />
           </h2>
-          <p className="body-6 text-ink-2">Listed SME, growing unlisted business, or corporate. We reply within one business day.</p>
+          <p className="body-3 text-ink-2">Listed SME, growing unlisted business, or a corporate that wants its investor engagement to finally work. If you're serious about compounding, we should talk.</p>
+          <p className="body-5 flex items-center gap-2 text-accent-paper"><CheckCircle size={16} weight="fill" aria-hidden="true" />We reply within one business day.</p>
+          <ul className="grid gap-4 border-t border-paper-line pt-6">
+            <li className="flex gap-3"><MapPin size={20} className="mt-0.5 shrink-0 text-accent-paper" aria-hidden="true" /><div><p className="caption-3 text-ink-3">Office</p><address className="body-6 text-ink">06, 9th Floor, NPX Urbtech, Sector 153,<br />Noida 201304, Uttar Pradesh, India</address></div></li>
+            <li className="flex gap-3"><Phone size={20} className="mt-0.5 shrink-0 text-accent-paper" aria-hidden="true" /><div><p className="caption-3 text-ink-3">Phone</p><a href="tel:+918796529416" className="body-5 underline decoration-paper-line underline-offset-4 hover:decoration-ink">+91 87965 29416</a></div></li>
+            <li className="flex gap-3"><EnvelopeSimple size={20} className="mt-0.5 shrink-0 text-accent-paper" aria-hidden="true" /><div><p className="caption-3 text-ink-3">General</p><a href="mailto:admin@washuvi.com" className="body-5 underline decoration-paper-line underline-offset-4 hover:decoration-ink">admin@washuvi.com</a></div></li>
+            <li className="flex gap-3"><EnvelopeSimple size={20} className="mt-0.5 shrink-0 text-accent-paper" aria-hidden="true" /><div><p className="caption-3 text-ink-3">Managing Partner</p><a href="mailto:shailesh@washuvi.com" className="body-5 underline decoration-paper-line underline-offset-4 hover:decoration-ink">shailesh@washuvi.com</a></div></li>
+          </ul>
         </div>
 
-        <form ref={form} onSubmit={onSubmit} onBlur={onBlur} noValidate className="grid gap-8">
+        <form ref={form} onSubmit={onSubmit} onBlur={onBlur} noValidate className="grid content-start gap-8 rounded-3xl border border-paper-line bg-white p-6 md:p-8">
           <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
           <div className="grid gap-8 md:grid-cols-2">
             <Field id="name" label="Name" required autoComplete="name" error={errors.name} />
@@ -88,9 +95,21 @@ export default function Contact() {
             <Field id="email" label="Email" type="email" inputMode="email" required autoComplete="email" error={errors.email} />
             <Field id="company" label="Company" autoComplete="organization" />
           </div>
+          <div className="grid gap-2">
+            <label htmlFor="service" className="caption-3 text-ink-3">What's this about? <span className="font-normal normal-case tracking-normal">(optional)</span></label>
+            <select id="service" name="service" defaultValue=""
+              className="min-h-11 w-full appearance-none rounded-none border-0 border-b border-paper-line bg-transparent bg-[length:16px] bg-[right_center] bg-no-repeat py-2 pr-8 text-[16px] leading-6 text-ink outline-none transition-colors duration-300 hover:border-ink-3 focus:border-ink"
+              style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%2355524C'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'/%3E%3C/svg%3E\")" }}>
+              <option value="">Select a mandate</option>
+              <option>Investor relations</option>
+              <option>Strategic advisory</option>
+              <option>Stock placement</option>
+              <option>Something else</option>
+            </select>
+          </div>
           <Field id="message" label="A few lines on your company" textarea />
 
-          <div className="grid justify-items-center gap-4">
+          <div className="grid justify-items-start gap-4">
             <motion.button whileTap={{ scale: 0.98 }} type="submit" disabled={state.kind === 'sending'} aria-busy={state.kind === 'sending'}
               className="btn-dark button-md group relative overflow-hidden px-6 disabled:cursor-not-allowed disabled:opacity-70">
               {state.kind === 'sending' ? 'Sending enquiry' : 'Send enquiry'}

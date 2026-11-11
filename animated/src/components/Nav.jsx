@@ -6,9 +6,11 @@ import Logo from './Logo';
 
 export const links = [
   { id: 'approach', label: 'Approach' },
+  { id: 'difference', label: 'Difference' },
   { id: 'services', label: 'Services' },
   { id: 'people', label: 'People' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'work', label: 'Work' },
+  { id: 'faq', label: 'FAQ' },
 ];
 const ids = links.map((l) => l.id);
 // 60ms per item, whole sequence capped at 400ms
@@ -22,7 +24,8 @@ export default function Nav() {
     document.body.style.overflow = open ? 'hidden' : '';
     const onKey = (e) => e.key === 'Escape' && setOpen(false);
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    const mq = window.matchMedia('(min-width: 1024px)'); const onMq = (e) => e.matches && setOpen(false); mq.addEventListener('change', onMq);
+    return () => { window.removeEventListener('keydown', onKey); mq.removeEventListener('change', onMq); };
   }, [open]);
 
   return (
@@ -39,7 +42,7 @@ export default function Nav() {
             <Logo />
             <span className="title-3">Washuvi</span>
           </a>
-          <ul className="hidden items-center gap-1 md:flex">
+          <ul className="hidden items-center gap-1 lg:flex">
             {links.map((l) => (
               <li key={l.id} className="relative">
                 {active === l.id && (
@@ -63,7 +66,7 @@ export default function Nav() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? 'Close menu' : 'Open menu'}
-              className="grid size-11 place-items-center rounded-full transition-colors hover:bg-white/10 md:hidden"
+              className="grid size-11 place-items-center rounded-full transition-colors hover:bg-white/10 lg:hidden"
             >
               <span className="flex w-5 flex-col gap-1" aria-hidden="true">
                 <motion.span className="block h-0.5 w-5 rounded-full bg-fg" animate={open ? { y: 6, rotate: 45 } : { y: 0, rotate: 0 }} transition={t.layout} />
@@ -79,7 +82,7 @@ export default function Nav() {
         {open && (
           <motion.div
             id="mobile-menu"
-            className="fixed inset-0 z-40 flex flex-col justify-between bg-[rgba(0,0,0,0.94)] px-6 pb-8 pt-24 backdrop-blur-2xl md:hidden"
+            className="fixed inset-0 z-40 flex flex-col justify-between bg-[rgba(0,0,0,0.94)] px-6 pb-8 pt-24 backdrop-blur-2xl lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

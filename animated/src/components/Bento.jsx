@@ -7,7 +7,12 @@ import anand from '../assets/images/anand-ms.webp';
 /** Proof cards. Every figure comes from the current washuvi.com. */
 export default function Bento() {
   return (
-    <div className="mx-auto grid max-w-6xl gap-4 px-4 pb-24 md:grid-cols-2 md:px-8 lg:grid-cols-4">
+    <section aria-labelledby="proof-title" className="paper bg-paper pb-20 pt-20 text-ink lg:pb-24 lg:pt-24">
+    <Reveal className="mx-auto mb-12 grid max-w-6xl gap-4 px-4 md:px-8">
+      <p className="eyebrow text-accent-paper">By the numbers</p>
+      <h2 id="proof-title" className="heading-2 phone-heading-4">Small on purpose. Senior by design.</h2>
+    </Reveal>
+    <div className="mx-auto grid max-w-6xl gap-4 px-4 md:grid-cols-2 md:px-8 lg:grid-cols-4">
       <Reveal className="relative overflow-hidden rounded-3xl bg-paper-2 md:row-span-2">
         <motion.img src={shailesh} alt="Portrait of Shailesh Kumar, Managing Partner" width="480" height="600" loading="lazy"
           className="h-full min-h-[24rem] w-full object-cover" whileHover={{ scale: 1.03 }} transition={t.layout} />
@@ -41,5 +46,6 @@ export default function Bento() {
         <p className="title-2 text-ink">Led by a cofounder of the <span className="text-accent-paper">Investor Relations Society of India</span>, Anand M.S.</p>
       </Reveal>
     </div>
+    </section>
   );
 }

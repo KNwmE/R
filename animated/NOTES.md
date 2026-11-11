@@ -1,4 +1,31 @@
-# Washuvi animated version: notes (v2)
+# Washuvi animated version: notes (v3)
+
+## v3: full content restored, v2 look kept
+
+v2 copied the reference's look but cut too much of Washuvi's content. v3 keeps the v2
+art (glow, chrome rings, light display type, stacked cards) and brings back everything
+from the static site, in this order:
+
+Hero (specific headline + proof line) · client names strip · Position (problem to
+solution) · five benefits · tagline · proof cards · three step approach · comparison
+table (9 rows) · three services with all five points · team with full bios · current
+work with the live roster card · 12 FAQs · enquiry form with office details · footer.
+
+### Motion added for the investor relations context
+
+- **Rings captioned "Your company · Its investors"** so the 3D object says something.
+- **Problem to solution card**: the problem, our answer and the end state arrive one after
+  another, so the section reads as an argument, not a list.
+- **Comparison table**: rows arrive in sequence and each Washuvi tick pops in after its row.
+- **Live roster**: the 10 slot bar fills to 6, a softly pulsing "Live mandates" dot.
+- **Approach rail** fills as you scroll and each step marker lights up as you reach it.
+- **Benefit cards** lift slightly and their icon tile fills with the accent on hover.
+- **Valuation bars** grow in the Strategic advisory card.
+- **FAQ** answers fade in; one open at a time; full keyboard support.
+
+---
+
+# v2 notes
 
 v2 follows the reference video the client shared: dark hero with a coloured glow and a
 chrome 3D object, light oversized type that comes into focus, a statement that lights up
