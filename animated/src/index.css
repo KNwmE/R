@@ -1,0 +1,72 @@
+@font-face {
+  font-family: 'Manrope'; font-style: normal; font-display: swap; font-weight: 200 800;
+  src: url('./assets/fonts/manrope-latin-wght-normal.woff2') format('woff2');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Palette: graphite and champagne gold. Dark backgrounds from the skill's B4 list only. */
+:root {
+  --bg: #181818;
+  --surface: #1F1F1F;
+  --surface-2: #272727;
+  --line: #313131;
+  --deep: #131209;
+  --text: #F2EFE8;
+  --text-2: #A9A49B;
+  --text-3: #8C877F;
+  --gold: #C9A96E;
+  --gold-hover: #D8BC86;
+  --on-gold: #181818;
+  --gold-soft: rgba(201, 169, 110, 0.12);
+  color-scheme: dark;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-bg text-ink font-sans antialiased; font-size: 16px; line-height: 24px; overflow-x: hidden; }
+  h1, h2, h3, h4 { text-wrap: balance; }
+  p, li { text-wrap: pretty; }
+  ::selection { background: var(--gold); color: var(--on-gold); }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
+  em, i { font-style: normal; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+}
+
+/* Named text styles (B1) */
+@layer components {
+  .heading-1 { font-size: 60px; line-height: 60px; font-weight: 600; letter-spacing: -0.03em; }
+  .heading-2 { font-size: 48px; line-height: 48px; font-weight: 600; letter-spacing: -0.025em; }
+  .heading-3 { font-size: 36px; line-height: 40px; font-weight: 600; letter-spacing: -0.02em; }
+  .heading-4 { font-size: 30px; line-height: 36px; font-weight: 600; letter-spacing: -0.015em; }
+  .heading-5 { font-size: 24px; line-height: 32px; font-weight: 600; letter-spacing: -0.01em; }
+  .heading-6 { font-size: 20px; line-height: 28px; font-weight: 600; }
+  .title-2 { font-size: 18px; line-height: 28px; font-weight: 500; }
+  .title-3 { font-size: 16px; line-height: 24px; font-weight: 500; }
+  .title-4 { font-size: 14px; line-height: 20px; font-weight: 500; }
+  .body-3 { font-size: 16px; line-height: 24px; font-weight: 400; }
+  .body-5 { font-size: 14px; line-height: 20px; font-weight: 500; }
+  .body-6 { font-size: 14px; line-height: 20px; font-weight: 400; }
+  .button-md { font-size: 16px; line-height: 24px; font-weight: 600; }
+  .button-sm { font-size: 14px; line-height: 20px; font-weight: 600; }
+  .caption-2 { font-size: 14px; line-height: 20px; font-weight: 400; }
+  .caption-3 { font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .caption-5 { font-size: 12px; line-height: 16px; font-weight: 400; }
+
+  /* Hero heading gradient (B5, dark theme) */
+  .text-hero { background: linear-gradient(90deg, #FFFFFF 0%, #9B9B9B 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+  .btn { @apply inline-flex items-center justify-center gap-2 min-h-11 rounded-full px-3 py-2 whitespace-nowrap transition-colors duration-300 ease-out; }
+  .btn-gold { @apply btn bg-gold text-on-gold hover:bg-gold-hover px-4; }
+  .btn-ghost { @apply btn border border-line text-ink hover:bg-surface-2; }
+  .card { @apply rounded-2xl border border-line bg-surface; }
+  .eyebrow { @apply caption-3 text-gold inline-flex items-center gap-2; }
+  .eyebrow::before { content: ''; width: 24px; height: 2px; border-radius: 9999px; background: currentColor; }
+}
+
+@media (max-width: 767px) {
+  .phone-heading-3 { font-size: 36px; line-height: 40px; letter-spacing: -0.02em; }
+  .phone-heading-4 { font-size: 30px; line-height: 36px; letter-spacing: -0.015em; }
+}
