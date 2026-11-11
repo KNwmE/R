@@ -26,14 +26,14 @@ export default function Position() {
           </Reveal>
           <ul className="flex flex-wrap gap-2" aria-label="Where our experience comes from">
             {chips.map((c, i) => (
-              <motion.li key={c} className="caption-2 rounded-full border border-paper-line bg-white px-3 py-1 text-ink-2"
+              <motion.li key={c} className="caption-2 rounded-full border border-paper-line bg-card px-3 py-1 text-ink-2"
                 initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}
                 transition={{ duration: 0.5, ease, delay: 0.2 + i * 0.06 }}>{c}</motion.li>
             ))}
           </ul>
         </div>
 
-        <ol className="relative grid content-start gap-2 rounded-3xl border border-paper-line bg-white p-2">
+        <ol className="relative grid content-start gap-2 rounded-3xl border border-paper-line bg-card p-2">
           {rows.map(([label, text], i) => (
             <motion.li key={label}
               className={`grid gap-2 rounded-2xl p-6 ${i === 0 ? 'bg-paper' : i === 1 ? 'bg-accent-strong text-white' : 'bg-ink text-paper'}`}

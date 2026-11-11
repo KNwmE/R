@@ -21,7 +21,7 @@ export const faqs = [
 function Item({ q, a, i, open, onToggle }) {
   const id = `faq-${i}`;
   return (
-    <li className={`rounded-2xl border bg-white transition-colors duration-300 ${open ? 'border-ink-3' : 'border-paper-line hover:border-ink-3'}`}>
+    <li className={`rounded-2xl border bg-card transition-colors duration-300 ${open ? 'border-ink-3' : 'border-paper-line hover:border-ink-3'}`}>
       <h3>
         <button type="button" aria-expanded={open} aria-controls={`${id}-panel`} id={`${id}-btn`} onClick={onToggle}
           className="title-3 flex min-h-14 w-full items-center justify-between gap-4 rounded-2xl px-6 py-4 text-left">

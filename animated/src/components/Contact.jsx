@@ -87,7 +87,7 @@ export default function Contact() {
           </ul>
         </div>
 
-        <form ref={form} onSubmit={onSubmit} onBlur={onBlur} noValidate className="grid content-start gap-8 rounded-3xl border border-paper-line bg-white p-6 md:p-8">
+        <form ref={form} onSubmit={onSubmit} onBlur={onBlur} noValidate className="grid content-start gap-8 rounded-3xl border border-paper-line bg-card p-6 md:p-8">
           <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
           <div className="grid gap-8 md:grid-cols-2">
             <Field id="name" label="Name" required autoComplete="name" error={errors.name} />

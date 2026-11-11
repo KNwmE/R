@@ -7,41 +7,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Three palettes, switchable in the sample. Dark bases come from the skill's B4 list. */
-:root, [data-palette='emerald'] {
-  --bg: #000000;
-  --surface: #131209;
-  --surface-2: #1F1F1F;
-  --line: rgba(255, 255, 255, 0.12);
-  --text: #F4F2ED;
-  --text-2: #B9B6AF;
-  --text-3: #8F8C86;
-  --accent: #8FD3B6;          /* text and marks on dark */
-  --accent-strong: #0F6B4F;   /* solid cards, glow core */
-  --accent-deep: #073B2C;     /* glow edge */
-  --on-accent: #04140E;
-  --paper: #F5F3EE;           /* light sections */
-  --paper-2: #EAE6DE;
-  --ink: #0B0B0A;
-  --ink-2: #55524C;
-  --ink-3: #6E6A63;
-  --paper-line: rgba(11, 11, 10, 0.12);
-  --accent-on-paper: #0F6B4F;
+/* Natural palette: warm near black, ivory, broadsheet paper and one earthy accent.
+   Dark base #131209 is from the skill's B4 list. Three accent pairings are switchable in the sample. */
+:root, [data-palette='forest'] {
+  --bg: #131209;
+  --surface: rgba(255, 246, 230, 0.045);
+  --surface-2: rgba(255, 246, 230, 0.08);
+  --line: rgba(237, 231, 218, 0.13);
+  --text: #EDE7DA;
+  --text-2: #B7AFA0;
+  --text-3: #918A7C;
+  --accent: #C4A574;          /* brass: marks and highlights on dark */
+  --accent-strong: #2F4A3E;   /* forest: solid cards, soft light */
+  --accent-deep: #1C2B23;
+  --on-accent: #17140C;
+  --paper: #F2EEE6;
+  --paper-2: #E6E0D4;
+  --card: #FBF9F4;
+  --ink: #1D1B17;
+  --ink-2: #57514A;
+  --ink-3: #6E675D;
+  --paper-line: rgba(29, 27, 23, 0.12);
+  --accent-on-paper: #2F4A3E;
   color-scheme: dark;
 }
-[data-palette='oxblood'] {
-  --accent: #E7B2A6;
-  --accent-strong: #7B2D26;
-  --accent-deep: #3A1210;
-  --on-accent: #1A0605;
-  --accent-on-paper: #7B2D26;
+[data-palette='terracotta'] {
+  --accent: #D8B48C;
+  --accent-strong: #8A4A33;
+  --accent-deep: #3D2219;
+  --accent-on-paper: #8A4A33;
 }
-[data-palette='bronze'] {
-  --accent: #DCC08A;
-  --accent-strong: #7A5A22;
-  --accent-deep: #34260C;
-  --on-accent: #171003;
-  --accent-on-paper: #7A5A22;
+[data-palette='slate'] {
+  --accent: #B9C3C6;
+  --accent-strong: #3A4B57;
+  --accent-deep: #1E262C;
+  --accent-on-paper: #3A4B57;
 }
 
 @layer base {
@@ -58,10 +58,10 @@
 
 @layer components {
   /* Display styles use a light weight to match the reference; sizes stay on the type scale. */
-  .display-1 { font-size: 96px; line-height: 96px; font-weight: 300; letter-spacing: -0.04em; }
-  .display-2 { font-size: 72px; line-height: 72px; font-weight: 300; letter-spacing: -0.035em; }
-  .heading-1 { font-size: 60px; line-height: 60px; font-weight: 300; letter-spacing: -0.03em; }
-  .heading-2 { font-size: 48px; line-height: 48px; font-weight: 300; letter-spacing: -0.025em; }
+  .display-1 { font-size: 96px; line-height: 96px; font-weight: 400; letter-spacing: -0.04em; }
+  .display-2 { font-size: 72px; line-height: 72px; font-weight: 400; letter-spacing: -0.035em; }
+  .heading-1 { font-size: 60px; line-height: 60px; font-weight: 400; letter-spacing: -0.03em; }
+  .heading-2 { font-size: 48px; line-height: 48px; font-weight: 400; letter-spacing: -0.025em; }
   .heading-3 { font-size: 36px; line-height: 40px; font-weight: 400; letter-spacing: -0.02em; }
   .heading-4 { font-size: 30px; line-height: 36px; font-weight: 400; letter-spacing: -0.015em; }
   .heading-5 { font-size: 24px; line-height: 32px; font-weight: 500; letter-spacing: -0.01em; }
@@ -78,9 +78,8 @@
   .caption-3 { font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
   .caption-5 { font-size: 12px; line-height: 16px; font-weight: 400; }
 
-  .text-hero { background: linear-gradient(90deg, #FFFFFF 0%, #9B9B9B 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    /* extend the painted box below the baseline so descenders (g, y, p) are not cut */
-    padding-bottom: 0.15em; margin-bottom: -0.15em; }
+  /* Solid ivory. The white to grey gradient read as generated, so it was dropped. */
+  .text-hero { color: var(--text); }
 
   .btn { @apply inline-flex items-center justify-center gap-2 min-h-11 rounded-full px-4 py-2 whitespace-nowrap transition-colors duration-300 ease-out; }
   .btn-light { @apply btn bg-fg text-bg hover:bg-white; }
@@ -89,14 +88,18 @@
   .eyebrow { @apply caption-3 inline-flex items-center gap-2; }
   .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 9999px; background: currentColor; }
 
-  /* Background glow: the reference's signature. The one place backgrounds use a gradient. */
-  .glow { background:
-      radial-gradient(60% 55% at 70% 45%, var(--accent-strong) 0%, var(--accent-deep) 45%, transparent 75%),
-      radial-gradient(40% 40% at 15% 90%, var(--accent-deep) 0%, transparent 70%),
-      #000000; }
-  .glow-bottom { background:
-      radial-gradient(80% 70% at 85% 110%, var(--accent-strong) 0%, var(--accent-deep) 40%, transparent 72%),
-      #000000; }
+  /* Soft, low contrast light instead of a neon glow, plus a faint film grain so surfaces feel printed, not rendered. */
+  .glow { position: relative; isolation: isolate; background:
+      radial-gradient(70% 60% at 72% 40%, color-mix(in srgb, var(--accent-strong) 55%, transparent) 0%, transparent 70%),
+      radial-gradient(45% 45% at 10% 95%, color-mix(in srgb, var(--accent-deep) 70%, transparent) 0%, transparent 70%),
+      var(--bg); }
+  .glow-bottom { position: relative; isolation: isolate; background:
+      radial-gradient(80% 70% at 85% 115%, color-mix(in srgb, var(--accent-strong) 55%, transparent) 0%, transparent 72%),
+      var(--bg); }
+  .glow::after, .glow-bottom::after, .grain::after {
+    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.09; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
 }
 
 @media (max-width: 767px) {

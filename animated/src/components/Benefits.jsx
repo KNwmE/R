@@ -24,7 +24,7 @@ export default function Benefits() {
         <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
           {items.map(([Icon, title, body], i) => (
             <motion.li key={title}
-              className={`group grid content-start gap-6 rounded-3xl border border-paper-line bg-white p-6 transition-colors duration-300 hover:border-ink-3 ${i < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}`}
+              className={`group grid content-start gap-6 rounded-3xl border border-paper-line bg-card p-6 transition-colors duration-300 hover:border-ink-3 ${i < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}`}
               initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -10% 0px' }}
               transition={{ duration: 0.7, ease, delay: (i % 3) * 0.08 }}
               whileHover={{ y: -4 }}>

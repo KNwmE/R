@@ -1,4 +1,31 @@
-# Washuvi animated version: notes (v4)
+# Washuvi animated version: notes (v5)
+
+## v5: natural colour, less "generated" look
+
+What read as AI generated, and what replaced it:
+
+| Before | Now |
+|---|---|
+| Neon radial glow on pure black | Soft, low contrast light on warm near black `#131209`, with a faint film grain |
+| White to grey gradient headline text | Solid ivory `#EDE7DA` |
+| Glossy mirror chrome chart | Satin ivory up candles, matte brick pullbacks `#8E4E38`, brushed brass trend line `#C4A574`, warm window light |
+| Hairline 300 weight headings | Steadier 400 weight |
+| Cool pure white cards | Warm card stock `#FBF9F4` on broadsheet paper `#F2EEE6`, ink `#1D1B17` |
+
+Accent pairings (switchable in the sample, remove before launch):
+
+| Pairing | Solid accent | Accent on dark | Accent on paper |
+|---|---|---|---|
+| **Forest & Brass** (default) | `#2F4A3E` | `#C4A574` | `#2F4A3E` |
+| **Terracotta & Sand** | `#8A4A33` | `#D8B48C` | `#8A4A33` |
+| **Slate & Stone** | `#3A4B57` | `#B9C3C6` | `#3A4B57` |
+
+Note: the solid ivory headline replaces the skill's hero gradient rule (B5), at the
+client's request for a more natural look.
+
+---
+
+# v4 notes
 
 ## v4: the 3D object is now a bull run chart
 

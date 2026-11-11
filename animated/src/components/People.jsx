@@ -27,7 +27,7 @@ export default function People() {
         </Reveal>
         <div className="grid gap-4 md:grid-cols-3">
           {people.map((p, i) => (
-            <Reveal as="article" key={p.name} delay={i * 0.08} className="group grid content-start gap-4 rounded-3xl border border-paper-line bg-white p-2">
+            <Reveal as="article" key={p.name} delay={i * 0.08} className="group grid content-start gap-4 rounded-3xl border border-paper-line bg-card p-2">
               <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-paper-2">
                 <motion.img src={p.img} width="480" height="600" loading="lazy" alt={`Portrait of ${p.name}, ${p.role.split(' · ')[0]}`}
                   className="h-full w-full object-cover" whileHover={{ scale: 1.03 }} transition={t.layout} />

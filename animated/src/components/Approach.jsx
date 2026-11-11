@@ -37,7 +37,7 @@ export default function Approach() {
           <ol className="grid gap-6">
             {steps.map((s, i) => (
               <li key={s.title} className="relative grid grid-cols-[48px_1fr] gap-4 md:gap-6">
-                <motion.span className="relative z-10 grid size-12 place-items-center overflow-hidden rounded-full border border-paper-line bg-white text-ink-3" aria-hidden="true"
+                <motion.span className="relative z-10 grid size-12 place-items-center overflow-hidden rounded-full border border-paper-line bg-card text-ink-3" aria-hidden="true"
                   initial="hide" whileInView="show" viewport={{ once: true, margin: '0px 0px -40% 0px' }}>
                   <s.icon size={20} />
                   <motion.span className="absolute inset-0 grid place-items-center rounded-full bg-accent-paper text-white"
@@ -46,7 +46,7 @@ export default function Approach() {
                     <s.icon size={20} weight="duotone" />
                   </motion.span>
                 </motion.span>
-                <Reveal className="grid gap-4 rounded-3xl border border-paper-line bg-white p-6">
+                <Reveal className="grid gap-4 rounded-3xl border border-paper-line bg-card p-6">
                   <p className="caption-3 text-ink-3">Step 0{i + 1}</p>
                   <h3 className="heading-5">{s.title}</h3>
                   <p className="body-6 text-ink-2">{s.body}</p>

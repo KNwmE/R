@@ -16,7 +16,7 @@ export default {
         bg: 'var(--bg)', surface: 'var(--surface)', 'surface-2': 'var(--surface-2)', line: 'var(--line)',
         fg: 'var(--text)', 'fg-2': 'var(--text-2)', 'fg-3': 'var(--text-3)',
         accent: 'var(--accent)', 'accent-strong': 'var(--accent-strong)', 'accent-deep': 'var(--accent-deep)', 'on-accent': 'var(--on-accent)',
-        paper: 'var(--paper)', 'paper-2': 'var(--paper-2)', ink: 'var(--ink)', 'ink-2': 'var(--ink-2)', 'ink-3': 'var(--ink-3)',
+        paper: 'var(--paper)', card: 'var(--card)', 'paper-2': 'var(--paper-2)', ink: 'var(--ink)', 'ink-2': 'var(--ink-2)', 'ink-3': 'var(--ink-3)',
         'paper-line': 'var(--paper-line)', 'accent-paper': 'var(--accent-on-paper)',
       },
       transitionTimingFunction: { DEFAULT: 'cubic-bezier(0.22, 1, 0.36, 1)', out: 'cubic-bezier(0.22, 1, 0.36, 1)' },

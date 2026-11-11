@@ -41,13 +41,14 @@ function Candle({ c, i, time, still }) {
       {/* wick */}
       <mesh position={[0, (lo + hi) / 2, 0]}>
         <cylinderGeometry args={[0.025, 0.025, hi - lo, 16]} />
-        <meshPhysicalMaterial color="#d6d6d6" metalness={0.6} roughness={0.25} />
+        <meshPhysicalMaterial color="#A39B8B" metalness={0.4} roughness={0.45} />
       </mesh>
       {/* body: bright pearl silver when up, smoked chrome when down (like a real chart's up and down days) */}
       <RoundedBox args={[0.36, bodyH, 0.36]} radius={0.05} smoothness={4} position={[0, bodyY, 0]}>
+        {/* satin ivory for up days, matte brick for pullbacks: printed chart colours, not neon */}
         {up
-          ? <meshPhysicalMaterial color="#f4f4f2" metalness={0.35} roughness={0.22} clearcoat={1} clearcoatRoughness={0.08} sheen={0.4} />
-          : <meshPhysicalMaterial color="#3a3a3a" metalness={1} roughness={0.3} clearcoat={0.6} />}
+          ? <meshPhysicalMaterial color="#EDE6D8" metalness={0.05} roughness={0.42} clearcoat={0.35} clearcoatRoughness={0.4} sheen={0.5} sheenColor="#fff4e0" />
+          : <meshPhysicalMaterial color="#8E4E38" metalness={0.05} roughness={0.55} />}
       </RoundedBox>
     </group>
   );
@@ -77,11 +78,11 @@ function Trend({ time, still }) {
   return (
     <group>
       <mesh ref={tube} geometry={geometry}>
-        <meshPhysicalMaterial color="#ffffff" metalness={1} roughness={0.08} clearcoat={1} />
+        <meshPhysicalMaterial color="#C4A574" metalness={1} roughness={0.3} />
       </mesh>
       <mesh ref={arrow} position={end} quaternion={quat} scale={0.0001}>
         <coneGeometry args={[0.13, 0.32, 32]} />
-        <meshPhysicalMaterial color="#ffffff" metalness={1} roughness={0.08} clearcoat={1} />
+        <meshPhysicalMaterial color="#C4A574" metalness={1} roughness={0.3} />
       </mesh>
     </group>
   );
@@ -107,7 +108,7 @@ function Chart({ still, variant }) {
       {/* baseline */}
       <mesh position={[0, BASE - 0.02, 0]}>
         <boxGeometry args={[candles.length * GAP + 0.5, 0.02, 0.5]} />
-        <meshPhysicalMaterial color="#c8c8c8" metalness={0.55} roughness={0.35} transparent opacity={0.55} />
+        <meshPhysicalMaterial color="#9C9483" metalness={0.2} roughness={0.6} transparent opacity={0.6} />
       </mesh>
       {candles.map((c, i) => <Candle key={i} c={c} i={i} time={time} still={still} />)}
       <Trend time={time} still={still} />
@@ -119,11 +120,11 @@ function Env({ tint }) {
   // Tinted reflections: built from light panels, so no HDR file is downloaded.
   return (
     <Environment resolution={256}>
-      <Lightformer intensity={3} position={[0, 4, 3]} scale={[8, 2, 1]} />
-      <Lightformer intensity={2} position={[-5, 0, 2]} rotation-y={Math.PI / 2} scale={[6, 3, 1]} />
-      <Lightformer intensity={4} color={tint} position={[5, -1, 1]} rotation-y={-Math.PI / 2} scale={[6, 4, 1]} />
-      <Lightformer intensity={1.5} color={tint} position={[0, -4, -2]} rotation-x={-Math.PI / 2} scale={[10, 10, 1]} />
-      <Lightformer form="ring" intensity={2} position={[2, 2, 4]} scale={1.5} />
+      {/* warm key light from the upper left, like a window, and a soft accent fill */}
+      <Lightformer intensity={2.2} color="#fff1dc" position={[-3, 4, 3]} scale={[8, 3, 1]} />
+      <Lightformer intensity={1.2} color="#f3e9d8" position={[-5, 0, 2]} rotation-y={Math.PI / 2} scale={[6, 3, 1]} />
+      <Lightformer intensity={1.4} color={tint} position={[5, -1, 1]} rotation-y={-Math.PI / 2} scale={[6, 4, 1]} />
+      <Lightformer intensity={0.8} color="#3a3328" position={[0, -4, -2]} rotation-x={-Math.PI / 2} scale={[10, 10, 1]} />
     </Environment>
   );
 }
@@ -142,6 +143,7 @@ export default function Chrome({ className = '', variant = 'hero', label }) {
         gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
         <Chart still={reduce} variant={variant} />
+        <ambientLight intensity={0.25} color="#fff3e2" />
         <Env tint={p.tint} />
       </Canvas>
     </div>

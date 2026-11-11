@@ -17,13 +17,13 @@ export default function Bento() {
         <motion.img src={shailesh} alt="Portrait of Shailesh Kumar, Managing Partner" width="480" height="600" loading="lazy"
           className="h-full min-h-[24rem] w-full object-cover" whileHover={{ scale: 1.03 }} transition={t.layout} />
         {/* outer 24 − gap 8 = 16 */}
-        <div className="absolute inset-x-2 bottom-2 rounded-2xl bg-white/90 p-4 backdrop-blur-md">
+        <div className="absolute inset-x-2 bottom-2 rounded-2xl bg-[rgba(251,249,244,0.92)] p-4 backdrop-blur-md">
           <p className="heading-3 text-ink">15+</p>
           <p className="caption-2 text-ink-2">Years in institutional equity research. Shailesh Kumar, Managing Partner</p>
         </div>
       </Reveal>
 
-      <Reveal delay={0.06} className="grid content-between gap-8 rounded-3xl border border-paper-line bg-white p-6">
+      <Reveal delay={0.06} className="grid content-between gap-8 rounded-3xl border border-paper-line bg-card p-6">
         <p className="caption-3 text-ink-3">Companies at any time</p>
         <div><p className="display-2 phone-heading-1 text-ink tabular-nums">8–10</p><p className="body-6 mt-2 text-ink-2">A capped roster, ever. We turn down more mandates than we accept.</p></div>
       </Reveal>
@@ -41,7 +41,7 @@ export default function Bento() {
         </div>
       </Reveal>
 
-      <Reveal delay={0.24} className="flex items-center gap-4 rounded-3xl border border-paper-line bg-white p-6 md:col-span-2">
+      <Reveal delay={0.24} className="flex items-center gap-4 rounded-3xl border border-paper-line bg-card p-6 md:col-span-2">
         <img src={anand} alt="" width="480" height="600" className="size-16 shrink-0 rounded-full object-cover object-top" loading="lazy" />
         <p className="title-2 text-ink">Led by a cofounder of the <span className="text-accent-paper">Investor Relations Society of India</span>, Anand M.S.</p>
       </Reveal>
