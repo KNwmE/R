@@ -1,69 +1,74 @@
-# Washuvi animated version: sample notes
+# Washuvi animated version: notes (v2)
 
-This folder is a **sample**: hero, numbers, tagline, approach, people and a contact band.
-Built with React, Tailwind CSS and Framer Motion, the stack 21st.dev components use.
-No 21st.dev components are inside yet: 21st.dev is blocked from the build session and
-no API key was provided. Any 21st.dev component can be dropped in later.
+v2 follows the reference video the client shared: dark hero with a coloured glow and a
+chrome 3D object, light oversized type that comes into focus, a statement that lights up
+on scroll, a proof card grid, stacked service cards, a minimal contact form and a glowing
+footer. The content is Washuvi's own, the 3D object is our own (two interlocking rings: a
+company and its investors), and the electric blue of the reference is replaced.
 
-## New colour pattern: graphite and champagne gold
+v1 (graphite and gold, no 3D) is in git history.
 
-| Token | Value | Use |
-|---|---|---|
-| Background | `#181818` | Page |
-| Surface | `#1F1F1F` / `#272727` | Cards, alternate sections |
-| Line | `#313131` | Borders and dividers |
-| Deep | `#131209` | Footer |
-| Text | `#F2EFE8` | Headings and body |
-| Muted text | `#A9A49B` / `#8C877F` | Supporting copy, captions |
-| Accent | `#C9A96E` (hover `#D8BC86`) | Primary button, active states, highlights |
+Built with React, Tailwind CSS, Framer Motion and React Three Fiber (three.js).
+No 21st.dev components: 21st.dev is blocked from the build session and no key was given.
 
-Why: dark graphite with one restrained metallic accent reads as senior and private,
-which suits an advisory firm that caps its roster. Gold is used sparingly (button,
-markers, progress), so it keeps meaning "this matters". All dark backgrounds come
-from the landing-page-design skill's allowed list; text and accent pairs pass 4.5:1.
+## Colour directions (switch live with the "Palette" control, sample only)
+
+| Palette | Glow core / edge | Accent on dark | Accent on light | Feel |
+|---|---|---|---|---|
+| **Emerald** (default) | `#0F6B4F` / `#073B2C` | `#8FD3B6` | `#0F6B4F` | Private banking, calm, trustworthy |
+| **Oxblood** | `#7B2D26` / `#3A1210` | `#E7B2A6` | `#7B2D26` | Heritage: Washuvi's current brand colour |
+| **Bronze** | `#7A5A22` / `#34260C` | `#DCC08A` | `#7A5A22` | Warm, established, premium |
+
+Shared: black `#000000` base, `#131209` cards, ivory paper sections `#F5F3EE`, ink `#0B0B0A`.
+Pick one and the switcher is removed.
 
 ## Motion that is actually beneficial
 
-Each one does a job beyond decoration.
+1. **Headline words come into focus (blur to sharp).** Sets the reading order on the first
+   screen and finishes in about 1.5s; the button is usable immediately.
+2. **Chrome rings that turn slowly and follow the pointer.** One memorable image that
+   carries the idea (company and investors, linked). Pauses when off screen.
+3. **Statement lights up word by word on scroll.** Slows the reader on the core promise.
+   Words stay lit once read.
+4. **Proof cards rise in one after another.** Each real number (8 to 10, 6, 50+, 15+) gets
+   its own beat instead of a crowded row.
+5. **Stacked service cards.** Each mandate gets the full screen for a moment, and the
+   stack shows there are exactly three.
+6. **Floating nav with a sliding "you are here" pill.** Orientation on a long page.
+7. **Form feedback:** inline errors that animate in under the field, a sending bar on the
+   button, a calm confirmation. Reduces failed or duplicate enquiries.
 
-1. **Hero headline lines rise in (0.9s, once).** Gives the first screen a clear reading
-   order: headline, then subheadline, then the button. It finishes in about 1.2s, so
-   the button is usable almost immediately.
-2. **Roster slots fill one by one (6 of 10).** This is the firm's core claim ("we cap at
-   8 to 10") made visible. The animation *is* the proof, not an ornament.
-3. **Tagline words light up as you scroll.** Slows the reader down on the single most
-   important sentence. Words stay lit once read, so it never replays.
-4. **Approach progress rail and step markers.** Shows where the reader is in a three
-   step process and that the steps are sequential.
-5. **Sections rise 32px and fade in, once.** Paces a long page so it doesn't arrive as
-   one wall of text. Never replays on scroll up.
-6. **Floating nav with a sliding "you are here" pill.** Orientation on a long page; the
-   pill slides between links instead of jumping.
-7. **Button feedback:** arrow nudges on hover, slight press on tap. Confirms the
-   element is clickable and that the tap registered.
-8. **Full height mobile menu with staggered links (60ms apart, 400ms max).** Easier to
-   hit on a phone than a small dropdown; the stagger shows the order quickly.
+## Left out on purpose
 
-Rules applied to all of them: one easing curve (`cubic-bezier(0.22, 1, 0.36, 1)`),
-only `transform` and `opacity` are animated, nothing below 200ms, and
-`prefers-reduced-motion` turns movement off and keeps only fades.
+- Count‑up numbers (show "0" first), parallax backgrounds, cursor followers, 3D tilt cards
+- Smooth scroll hijacking (feels laggy on trackpads and breaks keyboard scrolling)
+- Page loaders and splash screens
 
-## Motion deliberately left out
+## Where v2 departs from the landing-page-design skill, and why
 
-- **Count‑up numbers.** They show "0" first, which undercuts the proof they carry.
-- **Parallax and floating background shapes.** Cost performance on phones, add nothing.
-- **Cursor followers, magnetic buttons, 3D tilt cards.** Read as playful, not senior.
-- **Autoplaying marquees of client names.** Hard to read, and moving text is an
-  accessibility problem. The six names sit still in the roster card instead.
-- **Page loaders and splash screens.** Delay the content for no reason.
+The client's reference wins where the two conflict (the skill says the user's prompt wins).
+
+- **Background glows** (B4 says flat backgrounds): the glow is the reference's signature.
+  Used only in the hero, card art and footer; content sections stay flat.
+- **Light (300) weight display type**: the reference's elegance comes from it. Sizes stay on
+  the Tailwind type scale.
+- **Blur in the word reveal** (B7 says only transform and opacity): short, one time, and
+  dropped under reduced motion.
+- **Client names marquee** moves at a constant (linear) speed; it pauses on hover and is
+  static under reduced motion.
+
+## Performance
+
+- three.js is split into its own file (about 243 KB gzipped) and loads after the page text
+  (main bundle about 104 KB gzipped).
+- The 3D only renders while on screen; pixel ratio is capped at 1.75.
+- Reflections are made from built in light panels, so no HDR image is downloaded.
 
 ## Still to add (the "details" step)
 
-- Enquiry form with validation and loading, success and error states (from the static site)
-- Benefits, comparison table, services, current work, FAQ sections
+- Comparison table, current work, FAQ (from the static site)
 - Privacy, terms and 404 pages, meta and share tags, FAQ schema
-- Optional: swap selected pieces for 21st.dev components once access is available
-- Bundle trim: load Framer Motion features lazily (`LazyMotion`) to cut the JavaScript size
+- Remove the palette switcher once a colour is chosen
 
 ## Run it
 

@@ -7,42 +7,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Palette: graphite and champagne gold. Dark backgrounds from the skill's B4 list only. */
-:root {
-  --bg: #181818;
-  --surface: #1F1F1F;
-  --surface-2: #272727;
-  --line: #313131;
-  --deep: #131209;
-  --text: #F2EFE8;
-  --text-2: #A9A49B;
-  --text-3: #8C877F;
-  --gold: #C9A96E;
-  --gold-hover: #D8BC86;
-  --on-gold: #181818;
-  --gold-soft: rgba(201, 169, 110, 0.12);
+/* Three palettes, switchable in the sample. Dark bases come from the skill's B4 list. */
+:root, [data-palette='emerald'] {
+  --bg: #000000;
+  --surface: #131209;
+  --surface-2: #1F1F1F;
+  --line: rgba(255, 255, 255, 0.12);
+  --text: #F4F2ED;
+  --text-2: #B9B6AF;
+  --text-3: #8F8C86;
+  --accent: #8FD3B6;          /* text and marks on dark */
+  --accent-strong: #0F6B4F;   /* solid cards, glow core */
+  --accent-deep: #073B2C;     /* glow edge */
+  --on-accent: #04140E;
+  --paper: #F5F3EE;           /* light sections */
+  --paper-2: #EAE6DE;
+  --ink: #0B0B0A;
+  --ink-2: #55524C;
+  --ink-3: #6E6A63;
+  --paper-line: rgba(11, 11, 10, 0.12);
+  --accent-on-paper: #0F6B4F;
   color-scheme: dark;
+}
+[data-palette='oxblood'] {
+  --accent: #E7B2A6;
+  --accent-strong: #7B2D26;
+  --accent-deep: #3A1210;
+  --on-accent: #1A0605;
+  --accent-on-paper: #7B2D26;
+}
+[data-palette='bronze'] {
+  --accent: #DCC08A;
+  --accent-strong: #7A5A22;
+  --accent-deep: #34260C;
+  --on-accent: #171003;
+  --accent-on-paper: #7A5A22;
 }
 
 @layer base {
   html { scroll-behavior: smooth; scroll-padding-top: 96px; -webkit-text-size-adjust: 100%; }
-  body { @apply bg-bg text-ink font-sans antialiased; font-size: 16px; line-height: 24px; overflow-x: hidden; }
+  body { @apply bg-bg text-fg font-sans antialiased; font-size: 16px; line-height: 24px; overflow-x: hidden; }
   h1, h2, h3, h4 { text-wrap: balance; }
   p, li { text-wrap: pretty; }
-  ::selection { background: var(--gold); color: var(--on-gold); }
-  :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
-  em, i { font-style: normal; }
+  ::selection { background: var(--accent); color: var(--on-accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .paper :focus-visible { outline-color: var(--accent-on-paper); }
+  em, i, address, cite { font-style: normal; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 }
 
-/* Named text styles (B1) */
 @layer components {
-  .heading-1 { font-size: 60px; line-height: 60px; font-weight: 600; letter-spacing: -0.03em; }
-  .heading-2 { font-size: 48px; line-height: 48px; font-weight: 600; letter-spacing: -0.025em; }
-  .heading-3 { font-size: 36px; line-height: 40px; font-weight: 600; letter-spacing: -0.02em; }
-  .heading-4 { font-size: 30px; line-height: 36px; font-weight: 600; letter-spacing: -0.015em; }
-  .heading-5 { font-size: 24px; line-height: 32px; font-weight: 600; letter-spacing: -0.01em; }
-  .heading-6 { font-size: 20px; line-height: 28px; font-weight: 600; }
+  /* Display styles use a light weight to match the reference; sizes stay on the type scale. */
+  .display-1 { font-size: 96px; line-height: 96px; font-weight: 300; letter-spacing: -0.04em; }
+  .display-2 { font-size: 72px; line-height: 72px; font-weight: 300; letter-spacing: -0.035em; }
+  .heading-1 { font-size: 60px; line-height: 60px; font-weight: 300; letter-spacing: -0.03em; }
+  .heading-2 { font-size: 48px; line-height: 48px; font-weight: 300; letter-spacing: -0.025em; }
+  .heading-3 { font-size: 36px; line-height: 40px; font-weight: 400; letter-spacing: -0.02em; }
+  .heading-4 { font-size: 30px; line-height: 36px; font-weight: 400; letter-spacing: -0.015em; }
+  .heading-5 { font-size: 24px; line-height: 32px; font-weight: 500; letter-spacing: -0.01em; }
+  .heading-6 { font-size: 20px; line-height: 28px; font-weight: 500; }
   .title-2 { font-size: 18px; line-height: 28px; font-weight: 500; }
   .title-3 { font-size: 16px; line-height: 24px; font-weight: 500; }
   .title-4 { font-size: 14px; line-height: 20px; font-weight: 500; }
@@ -52,21 +75,31 @@
   .button-md { font-size: 16px; line-height: 24px; font-weight: 600; }
   .button-sm { font-size: 14px; line-height: 20px; font-weight: 600; }
   .caption-2 { font-size: 14px; line-height: 20px; font-weight: 400; }
-  .caption-3 { font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .caption-3 { font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
   .caption-5 { font-size: 12px; line-height: 16px; font-weight: 400; }
 
-  /* Hero heading gradient (B5, dark theme) */
   .text-hero { background: linear-gradient(90deg, #FFFFFF 0%, #9B9B9B 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 
-  .btn { @apply inline-flex items-center justify-center gap-2 min-h-11 rounded-full px-3 py-2 whitespace-nowrap transition-colors duration-300 ease-out; }
-  .btn-gold { @apply btn bg-gold text-on-gold hover:bg-gold-hover px-4; }
-  .btn-ghost { @apply btn border border-line text-ink hover:bg-surface-2; }
-  .card { @apply rounded-2xl border border-line bg-surface; }
-  .eyebrow { @apply caption-3 text-gold inline-flex items-center gap-2; }
-  .eyebrow::before { content: ''; width: 24px; height: 2px; border-radius: 9999px; background: currentColor; }
+  .btn { @apply inline-flex items-center justify-center gap-2 min-h-11 rounded-full px-4 py-2 whitespace-nowrap transition-colors duration-300 ease-out; }
+  .btn-light { @apply btn bg-fg text-bg hover:bg-white; }
+  .btn-dark { @apply btn bg-ink text-paper hover:bg-black; }
+  .btn-outline { @apply btn border border-line text-fg hover:bg-white/10; }
+  .eyebrow { @apply caption-3 inline-flex items-center gap-2; }
+  .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 9999px; background: currentColor; }
+
+  /* Background glow: the reference's signature. The one place backgrounds use a gradient. */
+  .glow { background:
+      radial-gradient(60% 55% at 70% 45%, var(--accent-strong) 0%, var(--accent-deep) 45%, transparent 75%),
+      radial-gradient(40% 40% at 15% 90%, var(--accent-deep) 0%, transparent 70%),
+      #000000; }
+  .glow-bottom { background:
+      radial-gradient(80% 70% at 85% 110%, var(--accent-strong) 0%, var(--accent-deep) 40%, transparent 72%),
+      #000000; }
 }
 
 @media (max-width: 767px) {
-  .phone-heading-3 { font-size: 36px; line-height: 40px; letter-spacing: -0.02em; }
-  .phone-heading-4 { font-size: 30px; line-height: 36px; letter-spacing: -0.015em; }
+  .phone-display { font-size: 48px; line-height: 48px; }
+  .phone-heading-3 { font-size: 36px; line-height: 40px; }
+  .phone-heading-4 { font-size: 30px; line-height: 36px; }
+  .phone-heading-5 { font-size: 24px; line-height: 32px; }
 }

@@ -1,72 +1,45 @@
-import { useRef } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
-import { Check } from '@phosphor-icons/react';
-import Reveal from './Reveal';
+import { motion } from 'framer-motion';
+import BlurWords from './BlurWords';
 import { ease } from '../lib/motion';
 
-const steps = [
-  {
-    title: 'We research you first',
-    body: "We don't pitch companies we haven't already researched. By the time we call, we've read the filings, walked the numbers and formed a real view. If we don't believe it, we don't call.",
-    point: 'Then a deep dive: model, financials, founder vision, competition',
-  },
-  {
-    title: 'We write the equity story',
-    body: 'A single, defensible growth narrative, not a deck of adjectives. Then we shortlist the exact investor categories that story is built to win.',
-    point: 'Built from your filings up, never a reused template',
-  },
-  {
-    title: 'We get you in the room, and keep you there',
-    body: 'Proactive outreach, quarterly concalls, management meetings, plant visits and perception management. A wider investor base becomes durable loyalty.',
-    point: 'Monthly sector letters keep investors engaged between results',
-  },
+const items = [
+  ['Research first', "We don't pitch companies we haven't already researched. If we don't believe it, we don't call."],
+  ['The equity story', 'A single, defensible growth narrative built from your filings up, not a deck of adjectives.'],
+  ['Investor access', 'Direct lines to mutual funds, family offices, PE desks and serious HNIs. Concalls, meetings, plant visits.'],
+  ['Always on', 'Monthly sector letters between results, and most present in a crisis, when it is hardest.'],
 ];
 
 export default function Approach() {
-  const listRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: listRef, offset: ['start 0.7', 'end 0.6'] });
-  const fill = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 });
-
   return (
-    <section id="approach" aria-labelledby="approach-title" className="py-20 lg:py-24">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 md:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-        <Reveal className="grid content-start gap-4 lg:sticky lg:top-24 lg:self-start">
-          <p className="eyebrow">Approach</p>
-          <h2 id="approach-title" className="heading-3 phone-heading-4">How a mandate runs, from first look to compounding.</h2>
-          <p className="body-3 text-ink-2">Three stages, run by the same senior partners from start to finish.</p>
-        </Reveal>
-
-        <div ref={listRef} className="relative">
-          {/* progress rail */}
-          <span className="absolute bottom-6 left-5 top-6 w-0.5 rounded-full bg-line" aria-hidden="true" />
-          <motion.span style={{ scaleY: fill }} className="absolute bottom-6 left-5 top-6 w-0.5 origin-top rounded-full bg-gold" aria-hidden="true" />
-
-          <ol className="grid gap-6">
-            {steps.map((s, i) => (
-              <li key={s.title} className="relative grid grid-cols-[40px_1fr] gap-6">
-                <span className="relative z-10 grid size-10 place-items-center overflow-hidden rounded-full border border-line bg-surface title-3 tabular-nums text-ink-2" aria-hidden="true">
-                  {i + 1}
-                  <motion.span
-                    className="absolute inset-0 grid place-items-center rounded-full bg-gold text-on-gold"
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true, margin: '0px 0px -40% 0px' }}
-                    transition={{ duration: 0.5, ease }}
-                  >
-                    {i + 1}
-                  </motion.span>
-                </span>
-                <Reveal className="card grid gap-4 p-6">
-                  <h3 className="heading-6">{s.title}</h3>
-                  <p className="body-6 text-ink-2">{s.body}</p>
-                  <p className="body-6 flex gap-2 border-t border-line pt-4 text-ink">
-                    <Check size={16} className="mt-0.5 shrink-0 text-gold" aria-hidden="true" />{s.point}
-                  </p>
-                </Reveal>
-              </li>
-            ))}
-          </ol>
+    <section id="approach" aria-labelledby="approach-title" className="paper border-t border-paper-line bg-paper py-20 text-ink lg:py-24">
+      <div className="mx-auto grid max-w-6xl gap-16 px-4 md:px-8">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <p className="eyebrow text-accent-paper">Approach</p>
+          <div className="grid gap-6">
+            <h2 id="approach-title" className="heading-2 phone-heading-4">
+              <BlurWords text="Thoughtful work behind every mandate." inView stagger={0.05} />
+            </h2>
+            <a href="#services" className="btn button-sm justify-self-start border border-paper-line text-ink hover:bg-paper-2">See what we do</a>
+          </div>
         </div>
+        <ol className="grid gap-px overflow-hidden rounded-3xl border border-paper-line bg-paper-line sm:grid-cols-2 lg:grid-cols-4">
+          {items.map(([title, body], i) => (
+            <motion.li
+              key={title}
+              className="group grid content-start gap-8 bg-paper p-6 transition-colors duration-300 hover:bg-white"
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+              transition={{ duration: 0.7, ease, delay: i * 0.08 }}
+            >
+              <span className="caption-3 text-ink-3">0{i + 1}</span>
+              <div className="grid gap-3">
+                <h3 className="heading-5">{title}</h3>
+                <p className="body-6 text-ink-2">{body}</p>
+              </div>
+            </motion.li>
+          ))}
+        </ol>
       </div>
     </section>
   );
